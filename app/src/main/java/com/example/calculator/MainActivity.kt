@@ -61,9 +61,14 @@ class MainActivity : AppCompatActivity() {
             numberTwo = "0"
             firstNum = true
         }
+        decBtn.setOnClickListener {
+            calcText.append(".")
+            firstOrSecond(".")
+        }
     }
     // Handles evaluating expressions based off of the mathFunc that has been selected
     private fun evaluate(func: String, first: String, second: String) : String {
+        var str = ""
         var num = 0.0
         if(func == "+") {
             num = first.toDouble() + second.toDouble()
@@ -76,7 +81,13 @@ class MainActivity : AppCompatActivity() {
         } else {
             return first
         }
-        return num.toString()
+        // Gets rid of the trailing 0 if the answer is a whole number
+        if(num.toString().get(num.toString().indexOf(".") + 1) == '0') {
+            return num.toInt().toString()
+        } else {
+            return num.toString()
+        }
+
     }
     // Determines weather it is the first or second number being inputted
     private fun firstOrSecond(num: String) {
