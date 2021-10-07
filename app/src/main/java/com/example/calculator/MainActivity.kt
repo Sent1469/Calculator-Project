@@ -9,6 +9,10 @@ var result = "0"
 var numberTwo = "0"
 var firstNum = true
 var mathFunc = ""
+// Locks to not let invalid input into the calculator
+var opLock = false;
+var ariLock = false;
+var decLock = false;
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,14 +42,21 @@ class MainActivity : AppCompatActivity() {
         // Creates all the number and arithmetic buttons and sets up even listeners for them
         for(i in 0..8) {
             intButtons[i].setOnClickListener {
-                calcText.append((i+1).toString())
-                firstOrSecond((i+1).toString())
+                if(!opLock) {
+                    calcText.append((i+1).toString())
+                    firstOrSecond((i+1).toString())
+                }
             }
         }
         for(i in 0..3) {
             ariButtons[i].setOnClickListener {
-                setOperator(operators[i])
-                calcText.append(operators[i])
+                if(!ariLock) {
+                    setOperator(operators[i])
+                    calcText.append(operators[i])
+                    opLock = false;
+                    ariLock = true;
+                    decLock = false;
+                }
             }
         }
         equalsBtn.setOnClickListener {
@@ -60,15 +71,23 @@ class MainActivity : AppCompatActivity() {
             result = "0"
             numberTwo = "0"
             firstNum = true
+            opLock = false;
+            ariLock = false;
+            decLock = false;
         }
         decBtn.setOnClickListener {
-            calcText.append(".")
-            firstOrSecond(".")
+            if(!opLock && !decLock) {
+                calcText.append(".")
+                firstOrSecond(".")
+                decLock = true;
+            }
         }
     }
     // Handles evaluating expressions based off of the mathFunc that has been selected
     private fun evaluate(func: String, first: String, second: String) : String {
-        var str = ""
+        opLock = true;
+        ariLock = false;
+        decLock = false;
         var num = 0.0
         if(func == "+") {
             num = first.toDouble() + second.toDouble()
@@ -91,7 +110,7 @@ class MainActivity : AppCompatActivity() {
     }
     // Determines weather it is the first or second number being inputted
     private fun firstOrSecond(num: String) {
-        if(firstNum) {
+        if (firstNum) {
             result += num
         } else {
             numberTwo += num
