@@ -1,5 +1,6 @@
 package com.example.calculator
 
+import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -13,6 +14,7 @@ var mathFunc = ""
 var opLock = false;
 var ariLock = false;
 var decLock = false;
+var isNegative = false;
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,6 +36,7 @@ class MainActivity : AppCompatActivity() {
         val decBtn = findViewById<Button>(R.id.decimalBtn)
         val equalsBtn = findViewById<Button>(R.id.equalsBtn)
         val clearBtn = findViewById<Button>(R.id.clearBtn)
+        val negBtn = findViewById<Button>(R.id.negBtn)
         var calcText = findViewById<TextView>(R.id.textView)
 
         val intButtons = arrayOf(btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9)
@@ -81,6 +84,10 @@ class MainActivity : AppCompatActivity() {
                 firstOrSecond(".")
                 decLock = true;
             }
+        }
+        //todo
+        negBtn.setOnClickListener {
+
         }
     }
     // Handles evaluating expressions based off of the mathFunc that has been selected
