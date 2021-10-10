@@ -7,6 +7,21 @@
     tools:context=".MainActivity">
 
     <Button
+        android:id="@+id/logrithm"
+        android:layout_width="95dp"
+        android:layout_height="70dp"
+        android:text="log"
+        android:textSize="24sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.914"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.346"
+        tools:visibility="invisible" />
+
+    <Button
         android:id="@+id/button8"
         android:layout_width="131dp"
         android:layout_height="79dp"
@@ -100,10 +115,24 @@
 
     <Button
         android:id="@+id/button1"
-        android:layout_width="131dp"
+        android:layout_width="61dp"
         android:layout_height="79dp"
         android:layout_marginStart="4dp"
         android:text="1"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button2"
+        app:layout_constraintHorizontal_bias="0.915"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.722" />
+
+    <Button
+        android:id="@+id/button0"
+        android:layout_width="61dp"
+        android:layout_height="79dp"
+        android:layout_marginStart="4dp"
+        android:text="0"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button2"

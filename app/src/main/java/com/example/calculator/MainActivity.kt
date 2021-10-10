@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        val btn0 = findViewById<Button>(R.id.button0)
         val btn1 = findViewById<Button>(R.id.button1)
         val btn2 = findViewById<Button>(R.id.button2)
         val btn3 = findViewById<Button>(R.id.button3)
@@ -37,17 +38,18 @@ class MainActivity : AppCompatActivity() {
         val equalsBtn = findViewById<Button>(R.id.equalsBtn)
         val clearBtn = findViewById<Button>(R.id.clearBtn)
         val negBtn = findViewById<Button>(R.id.negBtn)
+        val logBtn = findViewById<Button>(R.id.logrithm)
         var calcText = findViewById<TextView>(R.id.textView)
 
-        val intButtons = arrayOf(btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9)
+        val intButtons = arrayOf(btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9)
         val ariButtons = arrayOf(addBtn, subBtn, multBtn, divBtn)
         val operators = arrayOf("+", "-", "*", "/")
         // Creates all the number and arithmetic buttons and sets up even listeners for them
-        for(i in 0..8) {
+        for(i in 0..9) {
             intButtons[i].setOnClickListener {
                 if(!opLock) {
-                    calcText.append((i+1).toString())
-                    firstOrSecond((i+1).toString())
+                    calcText.append((i).toString())
+                    firstOrSecond((i).toString())
                 }
             }
         }
@@ -68,6 +70,7 @@ class MainActivity : AppCompatActivity() {
             mathFunc = ""
             calcText.text = result
         }
+        //  Clears and resets the calculator
         clearBtn.setOnClickListener {
             calcText.text = ""
             mathFunc = ""
@@ -77,6 +80,7 @@ class MainActivity : AppCompatActivity() {
             opLock = false;
             ariLock = false;
             decLock = false;
+            isNegative = false;
         }
         decBtn.setOnClickListener {
             if(!opLock && !decLock) {
@@ -85,9 +89,52 @@ class MainActivity : AppCompatActivity() {
                 decLock = true;
             }
         }
-        //todo
+        logBtn.setOnClickListener {
+            if(firstNum && result != "0") {
+                result = Math.log(result.toDouble()).toString()
+                calcText.text = result
+            } else {
+                calcText.setText("Error")
+            }
+        }
+        // Toggles a number to negative and back again
         negBtn.setOnClickListener {
-
+            if(!isNegative && firstNum) {
+                var temp = Math.abs(result.toDouble())
+                if(temp.toString().get(temp.toString().indexOf(".") + 1) == '0') {
+                    result = temp.toInt().toString()
+                }
+                result = "-$result"
+                calcText.setText(result)
+                isNegative = true
+            } else if(isNegative && firstNum) {
+                result = Math.abs(result.toDouble()).toString()
+                var temp = Math.abs(result.toDouble())
+                if(temp.toString().get(temp.toString().indexOf(".") + 1) == '0') {
+                    result = temp.toInt().toString()
+                }
+                calcText.setText(result)
+                isNegative = false
+            } else if(!isNegative && !firstNum) {
+                numberTwo = Math.abs(numberTwo.toDouble()).toString()
+                var temp = Math.abs(numberTwo.toDouble())
+                if(temp.toString().get(temp.toString().indexOf(".") + 1) == '0') {
+                    numberTwo = temp.toInt().toString()
+                }
+                numberTwo = "-$numberTwo"
+                var textToChange = result + mathFunc + numberTwo
+                calcText.setText(textToChange)
+                isNegative = true
+            } else {
+                numberTwo = Math.abs(numberTwo.toDouble()).toString()
+                var temp = Math.abs(numberTwo.toDouble())
+                if(temp.toString().get(temp.toString().indexOf(".") + 1) == '0') {
+                    numberTwo = temp.toInt().toString()
+                }
+                var textToChange = result + mathFunc + numberTwo
+                calcText.setText(textToChange)
+                isNegative = false
+            }
         }
     }
     // Handles evaluating expressions based off of the mathFunc that has been selected
@@ -127,4 +174,14 @@ class MainActivity : AppCompatActivity() {
         mathFunc = operator
         firstNum = false
     }
+
+//    override fun onSaveInstanceState(outState: Bundle) {
+//        outState.putString("calcText", findViewById(R.id.textView))
+//        super.onSaveInstanceState(outState)
+//    }
+//
+//    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+//        super.onRestoreInstanceState(savedInstanceState)
+//        findViewById<TextView>(R.id.textView).setText(savedInstanceState.getString("calcText"))
+//    }
 }

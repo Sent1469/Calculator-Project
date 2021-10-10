@@ -75,10 +75,23 @@
 
     <Button
         android:id="@+id/button1"
-        android:layout_width="110dp"
+        android:layout_width="50dp"
+        android:layout_height="70dp"
+        android:text="1"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.457" />
+
+    <Button
+        android:id="@+id/button0"
+        android:layout_width="50dp"
         android:layout_height="70dp"
         android:layout_marginStart="4dp"
-        android:text="1"
+        android:text="0"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button2"
@@ -192,19 +205,6 @@
         app:layout_constraintVertical_bias="0.721" />
 
     <Button
-        android:id="@+id/logBtn"
-        android:layout_width="95dp"
-        android:layout_height="70dp"
-        android:text="log"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.974"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.991" />
-
-    <Button
         android:id="@+id/equalsBtn"
         android:layout_width="95dp"
         android:layout_height="70dp"
@@ -239,6 +239,19 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.792"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.991" />
+
+    <Button
+        android:id="@+id/logrithm"
+        android:layout_width="95dp"
+        android:layout_height="70dp"
+        android:text="log"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.974"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.991" />
