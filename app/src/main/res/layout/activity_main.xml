@@ -263,7 +263,7 @@
     <TextView
         android:id="@+id/textView"
         android:layout_width="375dp"
-        android:layout_height="200dp"
+        android:layout_height="150dp"
         android:textColor="#000000"
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -279,8 +279,20 @@
         android:background="?android:attr/listDivider"
         app:layout_constraintBottom_toTopOf="@+id/clearBtn"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.486" />
+        app:layout_constraintVertical_bias="0.165" />
+
+    <Button
+        android:id="@+id/menuBtn"
+        android:layout_width="125dp"
+        android:layout_height="40dp"
+        android:text="About"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.345" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

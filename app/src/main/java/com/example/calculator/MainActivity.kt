@@ -1,5 +1,6 @@
 package com.example.calculator
 
+import android.content.Intent
 import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -39,6 +40,8 @@ class MainActivity : AppCompatActivity() {
         val clearBtn = findViewById<Button>(R.id.clearBtn)
         val negBtn = findViewById<Button>(R.id.negBtn)
         val logBtn = findViewById<Button>(R.id.logrithm)
+        val menuBtn = findViewById<Button>(R.id.menuBtn)
+        val aboutIntent = Intent(this, DisplayAboutActivity::class.java).apply {}
         var calcText = findViewById<TextView>(R.id.textView)
 
         val intButtons = arrayOf(btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9)
@@ -96,6 +99,10 @@ class MainActivity : AppCompatActivity() {
             } else {
                 calcText.setText("Error")
             }
+        }
+        // About button functionality to open another activity view
+        menuBtn.setOnClickListener {
+            startActivity(aboutIntent)
         }
         // Toggles a number to negative and back again
         negBtn.setOnClickListener {
