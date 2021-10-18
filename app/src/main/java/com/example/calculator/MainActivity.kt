@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        // Linking all the buttons and textfields from the frontend
         val btn0 = findViewById<Button>(R.id.button0)
         val btn1 = findViewById<Button>(R.id.button1)
         val btn2 = findViewById<Button>(R.id.button2)
@@ -47,7 +48,7 @@ class MainActivity : AppCompatActivity() {
         val intButtons = arrayOf(btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9)
         val ariButtons = arrayOf(addBtn, subBtn, multBtn, divBtn)
         val operators = arrayOf("+", "-", "*", "/")
-        // Creates all the number and arithmetic buttons and sets up even listeners for them
+        // Creates all the number and arithmetic buttons and sets up even listeners for them in a loop
         for(i in 0..9) {
             intButtons[i].setOnClickListener {
                 if(!opLock) {
@@ -181,14 +182,4 @@ class MainActivity : AppCompatActivity() {
         mathFunc = operator
         firstNum = false
     }
-
-//    override fun onSaveInstanceState(outState: Bundle) {
-//        outState.putString("calcText", findViewById(R.id.textView))
-//        super.onSaveInstanceState(outState)
-//    }
-//
-//    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
-//        super.onRestoreInstanceState(savedInstanceState)
-//        findViewById<TextView>(R.id.textView).setText(savedInstanceState.getString("calcText"))
-//    }
 }
